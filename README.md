@@ -1,22 +1,29 @@
-# K-RİSK
+Why I Built K-Risk
 
-> **Uyarı:** Bu uygulama gerçek değildir ve mezuniyet sonrası öğrenme amaçlı projedir.
+I developed K-Risk as a post-graduation project to practise turning theoretical concepts into working software.
 
-K-RİSK; kredi başvurularını risk, ödeme gücü, fiyatlama ve politika kurallarıyla değerlendiren açıklanabilir bir karar destek prototipidir.
+During the project, I worked on combining:
 
-**Özellikler:** ONAY / KISMİ ONAY / REDDET, dinamik uygun limit, PD-LGD-EL-RAROC kontrolleri, stres testi ve PDF karar raporu.
+Statistics + Credit Risk + Financial Mathematics + Decision Theory + Python
 
-**Teknoloji:** Python 3.11+ · FastAPI · Vanilla JavaScript · ReportLab · Pytest
+in the same application.
 
-## Çalıştırma
+The main purpose of K-Risk is not to claim that I recreated a real bank's internal credit system.
 
-Windows: `START_K_RISK.bat`
+It is a project where I can demonstrate how I approach a complex problem, divide it into modules, translate mathematical concepts into code, test the results, and improve the model when I find inconsistencies.
 
-veya:
+ Limitations
 
-```bash
-python -m pip install -r requirements.txt
-python run.py
-```
+K-Risk does not claim to provide:
 
-Test: `pytest -q`
+Real banking credit decisions
+Real customer data
+Production PD/LGD models
+Real institutional FTP curves
+Regulatory capital calculations
+ICAAP models
+Live credit-bureau integration
+Complete regulatory interpretation
+Production model validation
+
+K-Risk remains a learning, experimentation, and portfolio project.
