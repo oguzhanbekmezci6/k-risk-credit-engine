@@ -11,7 +11,10 @@ in the same application.
 The main purpose of K-Risk is not to claim that I recreated a real bank's internal credit system.
 
 It is a project where I can demonstrate how I approach a complex problem, divide it into modules, translate mathematical concepts into code, test the results, and improve the model when I find inconsistencies.
+
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" width="55"/> 
+
+
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="55"/>
 
  Limitations
