@@ -33,6 +33,7 @@ Production model validation
 
 K-Risk remains a learning, experimentation, and portfolio project.
 
+<img width="1113" height="253" alt="image" src="https://github.com/user-attachments/assets/dcf5c0f4-1c36-4df7-a549-968f4353b62f" />
 
 
 credit.py
