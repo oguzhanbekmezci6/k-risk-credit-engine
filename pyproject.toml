@@ -1,0 +1,10 @@
+[project]
+name = "k-risk"
+version = "14.1.2"
+description = "Mezuniyet sonrası öğrenme amaçlı, açıklanabilir kredi karar destek prototipi"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

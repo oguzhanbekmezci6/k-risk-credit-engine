@@ -1,0 +1,14 @@
+.git
+.gitignore
+.venv
+__pycache__
+.pytest_cache
+*.pyc
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.*
+data/*
+!data/.gitkeep
+K-RISK_V*.zip

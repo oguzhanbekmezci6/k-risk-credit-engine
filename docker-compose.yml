@@ -1,0 +1,24 @@
+services:
+  k-risk:
+    build: .
+    ports:
+      - "127.0.0.1:8765:8765"
+    environment:
+      KRISK_MODE: "demo"
+      KRISK_DB_PATH: "/app/data/k_risk.db"
+      KRISK_COOKIE_SECURE: "false"
+      KRISK_TRUSTED_HOSTS: "127.0.0.1,localhost"
+    volumes:
+      - k_risk_data:/app/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,noexec,nosuid,nodev
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 200
+    restart: unless-stopped
+
+volumes:
+  k_risk_data:

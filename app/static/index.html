@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="K-RİSK - mezuniyet sonrası öğrenme amaçlı açıklanabilir kredi karar destek prototipi">
+  <title>K-RİSK · Karar Motoru V14</title>
+  <link rel="icon" type="image/png" href="/static/k-risk-favicon.png?v=14.1.2">
+  <link rel="stylesheet" href="/static/styles.css?v=14.1.2">
+</head>
+<body>
+<div id="authLoadingView" class="auth-shell auth-loading-shell">
+  <section class="auth-brand" aria-hidden="true">
+    <img src="/static/k-risk-wordmark.png?v=14.1.2" alt="">
+  </section>
+  <section class="auth-panel"><div class="login-card auth-loading-card"><div class="auth-spinner" aria-hidden="true"></div><h2>K-RİSK</h2><p class="muted" id="authLoadingText">Oturum kontrol ediliyor.</p><button id="authRetryBtn" class="btn secondary hidden">Tekrar Dene</button></div></section>
+</div>
+
+<div id="setupView" class="auth-shell hidden">
+  <section class="auth-brand" aria-hidden="true"><img src="/static/k-risk-wordmark.png?v=14.1.2" alt=""></section>
+  <section class="auth-panel">
+    <div class="login-card">
+      <div class="auth-form-brand"><img src="/static/k-risk-logo.png?v=14.1.2" alt=""><div><strong>K-RİSK</strong><span>KARAR MOTORU</span></div></div>
+      <span class="eyebrow">İLK KURULUM</span><h2>Yönetici hesabı</h2>
+      <label class="field"><span>Kullanıcı adı</span><input id="setupUser" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Kullanıcı adı"></label>
+      <label class="field"><span>Şifre</span><div class="password-wrap"><input id="setupPass" type="password" autocomplete="new-password" placeholder="Şifre"><button type="button" class="password-toggle" data-target="setupPass" aria-label="Şifreyi göster">Göster</button></div></label>
+      <label class="field"><span>Şifre tekrar</span><div class="password-wrap"><input id="setupPass2" type="password" autocomplete="new-password" placeholder="Şifre tekrar"><button type="button" class="password-toggle" data-target="setupPass2" aria-label="Şifreyi göster">Göster</button></div></label>
+      <label id="setupCodeField" class="field hidden"><span>Kurulum kodu</span><input id="setupCode" type="password" autocomplete="off" placeholder="Kurulum kodu"></label>
+      <div class="password-rules" id="setupPasswordRules"><span>En az 12 karakter · büyük/küçük harf · rakam · özel karakter</span></div>
+      <button id="setupBtn" class="btn primary large">Hesabı Oluştur</button>
+      <div id="setupError" class="alert error" aria-live="polite"></div>
+    </div>
+  </section>
+</div>
+
+<div id="loginView" class="auth-shell hidden">
+  <section class="auth-brand" aria-hidden="true"><img src="/static/k-risk-wordmark.png?v=14.1.2" alt=""></section>
+  <section class="auth-panel">
+    <div class="login-card">
+      <div class="auth-form-brand"><img src="/static/k-risk-logo.png?v=14.1.2" alt=""><div><strong>K-RİSK</strong><span>KARAR MOTORU</span></div></div>
+      <h2>Giriş</h2>
+      <label class="field"><span>Kullanıcı adı</span><input id="loginUser" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Kullanıcı adı"></label>
+      <label class="field"><span>Şifre</span><div class="password-wrap"><input id="loginPass" type="password" autocomplete="current-password" placeholder="Şifre"><button type="button" class="password-toggle" data-target="loginPass" aria-label="Şifreyi göster">Göster</button></div></label>
+      <button id="loginBtn" class="btn primary large">Giriş Yap</button>
+      <button id="loginHelpBtn" class="btn text-btn login-help-btn" type="button">Giriş sorunu</button>
+      <div id="loginError" class="alert error" aria-live="polite"></div>
+      <div id="loginHelpBox" class="login-help-box hidden"><ol><li>Kullanıcı adını kontrol edin.</li><li>Şifrede büyük/küçük harfe dikkat edin.</li><li>İlk kurulum yapılmadıysa uygulamayı yeniden başlatın.</li></ol></div>
+      <p class="project-disclaimer auth-disclaimer">Bu uygulama gerçek değildir ve mezuniyet sonrası öğrenme amaçlı projedir.</p>
+    </div>
+  </section>
+</div>
+
+<div id="passwordView" class="auth-shell hidden">
+  <section class="auth-brand" aria-hidden="true"><img src="/static/k-risk-wordmark.png?v=14.1.2" alt=""></section>
+  <section class="auth-panel">
+    <div class="login-card">
+      <div class="auth-form-brand"><img src="/static/k-risk-logo.png?v=14.1.2" alt=""><div><strong>K-RİSK</strong><span>KARAR MOTORU</span></div></div>
+      <span class="eyebrow">GÜVENLİK</span><h2>Şifreyi değiştir</h2>
+      <label class="field"><span>Mevcut şifre</span><input id="currentPass" type="password" autocomplete="current-password"></label>
+      <label class="field"><span>Yeni şifre</span><input id="newPass" type="password" autocomplete="new-password"></label>
+      <label class="field"><span>Yeni şifre tekrar</span><input id="newPass2" type="password" autocomplete="new-password"></label>
+      <p class="field-help">En az 12 karakter; büyük/küçük harf, rakam ve özel karakter.</p>
+      <button id="changePasswordBtn" class="btn primary large">Şifreyi Güncelle</button>
+      <div id="passwordError" class="alert error" aria-live="polite"></div>
+    </div>
+  </section>
+</div>
+
+<div id="appView" class="app hidden">
+  <aside class="sidebar">
+    <div class="brand-lockup app-brand"><div class="logo-box logo-image-box"><img src="/static/k-risk-logo.png?v=14.1.2" alt="" aria-hidden="true"></div><div><b>K-RİSK</b><span>KARAR MOTORU</span></div></div>
+    <div class="nav-section-label">İŞLEMLER</div>
+    <nav id="mainNav">
+      <button class="nav active" data-page="overview"><span class="nav-icon">⌂</span><span>Ana Panel</span></button>
+      <button class="nav" data-page="decision"><span class="nav-icon">＋</span><span>Kredi Kararı</span></button>
+      <button class="nav" data-page="history"><span class="nav-icon">↺</span><span>Başvurular</span></button>
+    </nav>
+    <div class="nav-section-label role-nav" data-roles="admin,risk_manager">YÖNETİM</div>
+    <nav>
+      <button class="nav role-nav" data-page="risk" data-roles="admin,risk_manager"><span class="nav-icon">△</span><span>Kredi Riski</span></button>
+      <button class="nav role-nav" data-page="governance" data-roles="admin,risk_manager"><span class="nav-icon">◇</span><span>Politika & Yönetişim</span></button>
+      <button class="nav role-nav" data-page="science" data-roles="admin,risk_manager"><span class="nav-icon">∑</span><span>Gelişmiş Analizler</span></button>
+    </nav>
+    <div class="sidebar-help"><button id="sideHelpBtn" class="btn ghost-light" title="Yardım merkezini açar">? Yardım</button></div>
+    <div class="project-disclaimer side-disclaimer"><b>PROJE UYARISI</b><span>Bu uygulama gerçek değildir ve mezuniyet sonrası öğrenme amaçlı projedir.</span></div>
+    <div class="side-foot"><div class="user-dot"></div><div class="session-text"><b id="sessionUser">—</b><span id="sessionRole">—</span></div><button id="logoutBtn" class="icon-btn" title="Oturumu kapat">↪</button></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><span id="breadcrumb" class="eyebrow">K-RİSK / KARAR MOTORU</span><h2 id="pageTitle">Ana Panel</h2><p id="pageSubtitle"></p></div>
+      <div class="top-actions"><button id="topNewDecisionBtn" class="btn primary" title="Yeni kredi değerlendirmesi başlatır">＋ Yeni Karar</button><button id="helpBtn" class="btn secondary" title="Bu ekranın kullanım rehberini ve kavram sözlüğünü açar">? Yardım</button></div>
+    </header>
+
+    <section id="page-overview" class="page active">
+      <article class="welcome-card simple-welcome">
+        <div><h3 id="welcomeTitle">Hoş geldiniz.</h3></div>
+        <div class="welcome-actions"><button id="quickDecisionBtn" class="btn white" title="Yeni kredi kararı ekranına gider">+ Yeni Kredi Kararı</button><button id="allHistoryBtn" class="btn ghost-light" title="Önceki kararları açar">Başvurular</button><button id="tourBtn" class="hidden" type="button">Yardım</button></div>
+      </article>
+
+      <article class="journey-card page-guide" data-explanation="true"><div class="journey-head"><span class="guide-icon">?</span><div><b>Bu ekranda ne yapabilirsiniz?</b><span>Ana Panel günlük operasyonun özetidir. Yeni karar başlatın, son kararları kontrol edin ve riskte ikinci kontrole düşen başvuruları izleyin.</span></div></div><div class="journey-actions"><button class="guide-link" data-guide-page="decision">Yeni karar nasıl verilir?</button><button class="guide-link" data-help="stress">“İkinci kontrol” ne demek?</button></div></article>
+
+      <div class="kpis four">
+        <article><span>Toplam karar</span><strong id="ovDecisions">0</strong><small>Yetkiniz kapsamındaki</small></article>
+        <article class="good-kpi"><span>Onay</span><strong id="ovApproved">0</strong><small>Onaylanan başvuru</small></article>
+        <article class="bad-kpi"><span>Red</span><strong id="ovRejected">0</strong><small>Reddedilen başvuru</small></article>
+        <article class="warn-kpi"><span>İkinci kontrol</span><strong id="ovSensitive">0</strong><small>Streste değişebilen karar</small></article>
+      </div>
+
+      <div class="grid two overview-grid">
+        <article class="panel">
+          <div class="panel-head"><div><span class="section-kicker">SON KARARLAR</span><h3>Son kararlar</h3></div></div>
+          <div id="recentDecisions" class="empty-state"><b>Henüz karar yok.</b><span>Yeni bir kredi kararı oluşturduğunuzda burada görünecek.</span></div>
+        </article>
+        <article class="panel quick-guide">
+          <div class="panel-head"><div><span class="section-kicker">3 ADIM</span><h3>İşlem akışı</h3></div></div>
+          <div class="simple-steps">
+            <div><i>1</i><span><b>Kredi sözleşmesini tanımlayın</b><small>Ürün, vade, tutar, ödeme yapısı, PD/LGD ve politika.</small></span></div>
+            <div><i>2</i><span><b>“Kararı Hesapla” deyin</b><small>Sistem limit, risk ve gerekçeyi üretir.</small></span></div>
+            <div><i>3</i><span><b>Sonucu okuyun</b><small>Yönetici isterse PDF karar raporunu indirir.</small></span></div>
+          </div>
+          <div class="system-summary mini-system"><div><span>Aktif politika</span><b id="ovPolicySummary">—</b></div><div><span>Model</span><b id="ovModel">—</b></div></div>
+          <span class="hidden" id="ovPolicy">—</span><span class="hidden" id="ovPolicyVersion">—</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="page-decision" class="page">
+      <div class="page-intro simple-intro compact-decision-intro"><div><h3>Kredi bilgileri</h3></div></div>
+      <article class="journey-card page-guide" data-explanation="true"><div class="journey-head"><span class="guide-icon">1</span><div><b>Bu ekranın amacı</b><span>Bir kredi sözleşmesini yalnız PD/LGD ile değil; ürün, vade, ödeme planı, gelir-borç kapasitesi, teminat, fonlama ve politika koşullarıyla birlikte modellemektir.</span></div></div><div class="journey-steps"><span><i>1</i> Kredi yapısını ve vadeyi girin</span><span><i>2</i> Risk ve ödeme gücü bilgilerini girin</span><span><i>3</i> Ekonomik nakit akışını ve politika sonucunu okuyun</span></div></article>
+      <div class="decision-layout v4-layout">
+        <article class="panel form-panel">
+          <div class="simple-form-heading"><div><h4>Kredi bilgileri</h4><p data-explanation="true"></p></div></div>
+          <div class="form-grid main-fields">
+            <label class="field full"><span>Başvuru numarası <button class="info-btn" data-help="applicant">i</button></span><input id="dApplicant" value="DEMO-001" maxlength="64"><small>Bankadaki başvuru referansı. Örn. BSV-2026-00125</small></label>
+            <label class="field"><span>Kredi ürünü <button class="info-btn" data-help="product_type">i</button></span><select id="dProduct"><option value="ihtiyac">Bireysel ihtiyaç</option><option value="konut">Konut</option><option value="tasit">Taşıt</option><option value="ticari_taksitli">Taksitli ticari</option><option value="spot">Spot / vade sonu</option><option value="diger">Diğer</option></select><small>Ürün seçimi vade ve teminat kontrollerinin nasıl yorumlanacağını belirler.</small></label>
+            <label class="field"><span>Vade (ay) <button class="info-btn" data-help="term">i</button></span><input id="dTerm" type="number" min="1" max="600" step="1" value="12" required><small>Kredinin toplam geri ödeme süresi. Vade zorunludur.</small></label>
+            <label class="field full money-field"><span>Talep edilen kredi tutarı (TL) <button class="info-btn" data-help="amount" aria-label="Kredi tutarı açıklaması">i</button></span><div class="money-input-wrap"><span>₺</span><input id="dAmount" class="money-input" inputmode="decimal" value="150.000" data-max="1000000000"></div><small>Rakamları yazmanız yeterli; binlik noktalar otomatik eklenir; kuruş için virgül kullanılır.</small></label>
+            <label class="field important-field"><span>Müşteriye uygulanan aylık faiz (%) <button class="info-btn" data-help="rate">i</button></span><input id="dRate" type="number" min="0" max="50" step="0.01" value="3.84"><small id="dRateNote" data-explanation="true">Güncel referans verilere göre ihtiyaç kredisi aylık oranı %3,84’tür (11.08.2026). Müşteriye özel oran değişebilir.</small></label>
+            <label class="field"><span>Geri ödeme yapısı <button class="info-btn" data-help="repayment_type">i</button></span><select id="dRepayment"><option value="equal_installment">Eşit taksit</option><option value="equal_principal">Eşit anapara</option><option value="bullet">Vade sonu anapara (bullet)</option></select><small>Aylık taksit ve kalan bakiye bu seçime göre hesaplanır.</small></label>
+            <label class="field"><span>PD ufku <button class="info-btn" data-help="pd_basis">i</button></span><select id="dPdBasis"><option value="annual_12m">12 aylık PD</option><option value="lifetime">Vade sonuna kadar PD</option></select><small>PD değerinin hangi zaman ufkuna ait olduğunu açıkça belirtin.</small></label>
+            <label class="field"><span>Temerrüt olasılığı · PD (%) <button class="info-btn" data-help="pd">i</button></span><input id="dPd" type="number" min="0.01" max="99.99" step="0.1" value="8"><small>8 yazmak %8 demektir; PD ufku yukarıdaki seçimle birlikte yorumlanır.</small></label>
+            <label class="field"><span>Temerrütte zarar · LGD (%) <button class="info-btn" data-help="lgd">i</button></span><input id="dLgd" type="number" min="0" max="100" step="0.1" value="55"><small>55 yazmak %55 demektir.</small></label>
+            <label class="field money-field"><span>Aylık net gelir / nakit akışı (TL) <button class="info-btn" data-help="income">i</button></span><input id="dIncome" class="money-input" inputmode="decimal" value="50.000" data-max="10000000000"><small>Bireyselde net gelir; ticari kullanımda kurumun uygun nakit akışı göstergesi.</small></label>
+            <label class="field money-field"><span>Mevcut aylık borç servisi (TL) <button class="info-btn" data-help="debt_service">i</button></span><input id="dExistingDebt" class="money-input" inputmode="decimal" value="5.000" data-max="10000000000"><small>Mevcut kredi/taksit ödemeleri. K-Risk yeni taksitle birlikte ödeme gücü oranını gösterir.</small></label>
+            <label class="field full"><span>Karar politikası <button class="info-btn" data-help="policy">i</button></span><select id="dPolicy"></select><small>Bankanın risk iştahı ve kurum içi eşikleri. Mevzuat referanslarından ayrı gösterilir.</small></label>
+          </div>
+
+          <details class="advanced-box v4-advanced"><summary>Teminat ve ek bilgiler</summary><p>Merkezi ekonomik parametreler otomatik uygulanır.</p><div class="form-grid compact">
+            <label class="field money-field"><span>Net peşin ücret / komisyon (TL) <button class="info-btn" data-help="fee">i</button></span><input id="dFee" class="money-input" inputmode="decimal" value="0" data-max="1000000000"><small data-explanation="true">Vergi sonrası ekonomik katkıya dahil edilecek net başlangıç geliri.</small></label>
+            <label class="field money-field"><span id="collateralLabel">Teminat / ekspertiz değeri (TL)</span> <button class="info-btn" data-help="collateral">i</button><input id="dCollateral" class="money-input" inputmode="decimal" value="0" data-max="10000000000"><small id="collateralHelp" data-explanation="true">Konut için ekspertiz, taşıt için fatura/kasko değeri kullanılır. Teminat değeri LGD'yi otomatik değiştirmez.</small></label>
+            <label class="field"><span>Konut enerji sınıfı <button class="info-btn" data-help="energy_class">i</button></span><select id="dEnergy"><option value="other">Diğer / bilinmiyor</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select><small data-explanation="true">Konut LTV referans tablosunda enerji sınıfına göre oran farklılaşabilir.</small></label>
+            <label id="housingTaxField" class="field full hidden"><span><input id="dHousingBsmvExempt" type="checkbox"> Konut BSMV istisna şartları teyit edildi <button class="info-btn" data-help="housing_tax">i</button></span><small data-explanation="true">Yalnız konut ürünü içindir. İşaretlenmezse motor BSMV istisnasını varsaymaz; KKDF konut finansmanı profilinde %0'dır.</small></label>
+            <label id="housingOtherHomeField" class="field full hidden"><span><input id="dHousingHasOtherHome" type="checkbox"> Başvuran/eş/18 yaş altı çocukta başka konut var</span><small data-explanation="true">BDDK 10656 kapsamına giriyorsa azami kredi/değer oranı %75 azaltılır. İstisna/hisseli tapu durumları ayrıca teyit edilmelidir.</small></label>
+            <label id="housingAgeField" class="field hidden"><span>Başvuran yaşı (yıl)</span><input id="dApplicantAge" type="number" min="18" max="120" step="1" value="35"><small data-explanation="true">Güncel konut kredisi politikasına göre yaş + kredi vadesi toplamı 70 yılı aşmamalıdır.</small></label>
+            <label id="vehicleUsedField" class="field full hidden"><span><input id="dVehicleIsUsed" type="checkbox"> Araç ikinci el</span><small data-explanation="true">İkinci el bireysel taşıtta güncel araç yaşı ve yaş + vade sınırları ayrıca kontrol edilir.</small></label>
+            <label id="vehicleAgeField" class="field hidden"><span>Araç yaşı (yıl)</span><input id="dVehicleAge" type="number" min="0" max="100" step="1" value="0"><small data-explanation="true">Güncel taşıt kredisi politikasına göre araç yaşı en fazla 10; araç yaşı + kredi vadesi en fazla 12 yıldır.</small></label>
+            <label class="field"><span>Varsayımsal ek bilgi maliyeti (TL) <button class="info-btn" data-help="evsi">i</button></span><input id="dInfoCost" class="money-input" inputmode="decimal" value="350" data-max="1000000000"><small data-explanation="true">Sadece EVSI hesabında kullanılır; satın al/alma önerisi üretilmez.</small></label>
+            <div class="simulation-notice full" data-explanation="true"><b>SİMÜLASYON</b><span>Ek bilgi matrisi gerçek kredi bürosuna bağlı değildir. Bilgi değeri bölümü yalnız matematiksel simülasyondur.</span></div>
+          </div></details>
+          <button id="runDecision" class="btn primary action-btn v4-action" title="Kredi sözleşmesini nakit akışı, risk, politika ve stres koşullarıyla değerlendirir"><span>Kararı Hesapla</span><small data-explanation="true">Kredi ekonomisi, risk ve politika birlikte hesaplanır.</small></button>
+          <div id="decisionError" class="alert error" aria-live="polite"></div>
+        </article>
+        <div id="decisionResult" class="result-stack"><article class="panel empty-state tall"><div class="empty-icon logo-empty"><img src="/static/k-risk-logo.png?v=14.1.2" alt="K-Risk"></div><b>Karar sonucu burada görünecek</b><span>Soldaki kredi sözleşmesi ve risk bilgilerini girin; ardından “Ekonomiyi ve Kararı Hesapla” düğmesine basın.</span></article></div>
+      </div>
+    </section>
+
+    <section id="page-history" class="page">
+      <div class="page-intro"><div><span class="section-kicker">BAŞVURU MERKEZİ</span><h3>Başvurular</h3></div><button id="refreshHistory" class="btn secondary" title="Karar listesini sunucudan yeniden yükler">↻ Yenile</button></div><article class="journey-card page-guide" data-explanation="true"><div class="journey-head"><span class="guide-icon">?</span><div><b>Bu ekran nasıl kullanılır?</b><span>Arama alanına başvuru numarası, karar veya politika yazın. “Aç” ile karar detayını; yetkiniz varsa “PDF” ile denetlenebilir karar raporunu görüntüleyin.</span></div></div></article>
+      <article class="panel">
+        <div class="history-toolbar"><label class="search-box"><span>⌕</span><input id="historySearch" placeholder="Başvuru no veya karar ara"></label><span id="historyCount" class="muted">0 kayıt</span></div>
+        <div id="historyTable" class="empty-state"><b>Karar geçmişi yükleniyor…</b></div>
+      </article>
+      <div id="historyDetail"></div>
+    </section>
+
+    <section id="page-risk" class="page role-page" data-roles="admin,risk_manager">
+      <div class="page-intro"><div><span class="section-kicker">KREDİ RİSKİ</span><h3>Kredi riski</h3></div></div>
+      <article class="journey-card page-guide" data-explanation="true"><div class="journey-head"><span class="guide-icon">R</span><div><b>Bu ekran neyi çözer?</b><span>Tek bir kredi için EAD, beklenen kayıp ve sermaye göstergelerini ayrı bir risk hesabı olarak görmenizi sağlar.</span></div></div><div class="journey-steps"><span><i>1</i> Kullanılmış ve kullanılmamış limiti girin</span><span><i>2</i> PD, LGD ve güven düzeyini tanımlayın</span><span><i>3</i> Risk ölçülerini hesaplayın</span></div></article>
+
+      <div class="risk-single-wrap">
+        <article class="panel">
+          <div class="panel-head"><div><span class="section-kicker">TEK KREDİ</span><h3>EL · UL · EAD · Credit VaR</h3><p>Kullanılmış ve kullanılmamış limitten EAD üretin; ardından temel kredi riski ölçülerini hesaplayın.</p></div></div>
+          <div class="form-grid compact">
+            <label class="field money-field"><span>Kullanılmış tutar (TL) <button class="info-btn" data-help="ead">i</button></span><input id="riskDrawn" class="money-input" inputmode="decimal" value="300.000"><small>Halen kullanılan veya bilanço üzerinde riskte olan tutar.</small></label>
+            <label class="field money-field"><span>Kullanılmamış limit (TL) <button class="info-btn" data-help="ccf">i</button></span><input id="riskUndrawn" class="money-input" inputmode="decimal" value="200.000"><small>Henüz kullanılmamış fakat müşterinin çekebileceği taahhüt.</small></label>
+            <label class="field"><span>CCF (%) <button class="info-btn" data-help="ccf">i</button></span><input id="riskCcf" type="number" min="0" max="100" step="1" value="50"><small>Kullanılmamış limitin ne kadarının EAD'ye dönüşeceği varsayımı.</small></label>
+            <label class="field"><span>PD (%) <button class="info-btn" data-help="pd">i</button></span><input id="riskPd" type="number" min="0.01" max="99.99" step="0.1" value="8"><small>Temerrüt olasılığı.</small></label>
+            <label class="field"><span>LGD (%) <button class="info-btn" data-help="lgd">i</button></span><input id="riskLgd" type="number" min="0" max="100" step="0.1" value="50"><small>Temerrüt halinde EAD'nin kaybedilmesi beklenen oranı.</small></label>
+            <label class="field"><span>VaR güven düzeyi (%) <button class="info-btn" data-help="credit_var">i</button></span><input id="riskConfidence" type="number" min="50" max="99.99" step="0.1" value="99"><small>Tek kredi kayıp eşiğinin okunacağı güven düzeyi.</small></label>
+          </div>
+          <button id="runSingleRisk" class="btn primary">Tek Kredi Riskini Hesapla</button>
+          <div id="singleRiskError" class="alert error" aria-live="polite"></div>
+          <div id="singleRiskResult" class="mini-result risk-result-box">Henüz hesaplama yapılmadı.</div>
+        </article>
+      </div>
+
+      <article class="panel risk-principles">
+        <div class="panel-head"><div><span class="section-kicker">OKUMA REHBERİ</span><h3>Risk göstergelerini nasıl yorumlayacaksınız?</h3><p>Teknik açıklamalar Yardım Merkezi içinde tutulur.</p></div></div>
+        <div class="risk-definition-grid"><div><b>EL · Beklenen Kayıp</b><span>PD × LGD × EAD. Normal koşullarda fiyatlamada ve risk maliyetinde dikkate alınan ortalama kayıp.</span></div><div><b>UL · Beklenmeyen Kayıp</b><span>Kayıp dağılımının oynaklığı. Beklenen kaybın ötesinde sermayeyi tehdit eden belirsizlik.</span></div><div><b>Credit VaR</b><span>Belirli güven düzeyinde aşılması beklenmeyen kredi kaybı eşiği.</span></div><div><b>Ekonomik Sermaye</b><span>VaR − EL olarak raporlanan kuyruk kaybı tamponu; düzenleyici sermaye hesabı değildir.</span></div></div>
+      </article>
+    </section>
+
+    <section id="page-governance" class="page role-page" data-roles="admin,risk_manager">
+      <div class="page-intro"><div><span class="section-kicker">KURUMSAL YÖNETİŞİM</span><h3>Politika & yönetişim</h3></div></div><article class="journey-card page-guide" data-explanation="true"><div class="journey-head"><span class="guide-icon">!</span><div><b>Yönetici alanı</b><span>Burada politika eşikleri, model sürümü, kullanıcı rolleri ve denetim olayları izlenir. Kullanıcı hesabı oluşturma yalnız Yönetici rolüne açıktır.</span></div></div></article>
+      <div class="grid two"><article class="panel"><div class="panel-head"><div><h3>Karar politikaları</h3><p>Aktif ve alternatif risk stratejileri.</p></div></div><div id="policyTable">—</div></article><article class="panel"><div class="panel-head"><div><h3>Model durumu</h3><p>Uygulama ve model sürümü.</p></div></div><div id="modelGovernance" class="kv-list">—</div></article></div>
+      <article class="panel role-control" data-roles="admin">
+        <div class="panel-head"><div><h3>Kullanıcı Yönetimi</h3><p>Çalışan hesabı oluşturun. Yeni kullanıcı ilk girişinde şifresini değiştirmek zorundadır.</p></div></div>
+        <div class="user-create-grid">
+          <label class="field"><span>Kullanıcı adı</span><input id="newUsername" placeholder="Örn. kredi.analist1"></label>
+          <label class="field"><span>Rol</span><select id="newUserRole"><option value="analyst">Kredi Analisti</option><option value="risk_manager">Risk Yöneticisi</option><option value="admin">Yönetici</option></select></label>
+          <label class="field"><span>Geçici şifre</span><input id="newUserPass" type="password" autocomplete="new-password" placeholder="En az 12 karakter"></label>
+          <label class="field"><span>Şifre tekrar</span><input id="newUserPass2" type="password" autocomplete="new-password"></label>
+        </div>
+        <button id="createUserBtn" class="btn primary">Çalışan Hesabı Oluştur</button>
+        <div id="createUserMessage" class="alert" aria-live="polite"></div>
+        <div id="usersTable" class="users-table">—</div>
+      </article>
+      <article class="panel"><div class="panel-head"><div><h3>Denetim izi</h3><p>Karar, rapor ve güvenlik olayları.</p></div><button id="refreshAudit" class="btn secondary small">↻ Yenile</button></div><div id="auditTable">—</div></article>
+    </section>
+
+    <section id="page-science" class="page role-page" data-roles="admin,risk_manager">
+      <div class="page-intro"><div><span class="section-kicker">MODEL & RİSK LABORATUVARI</span><h3>Gelişmiş analizler</h3></div><div class="intro-note warning"><b>Uzman ekranı</b><span>Günlük kullanım için gerekli değildir.</span></div></div><article class="journey-card page-guide" data-explanation="true"><div class="journey-head"><span class="guide-icon">∑</span><div><b>Bu bölüm ne zaman kullanılır?</b><span>Model doğrulama, eğitim, politika geliştirme veya yeni gözlemlerle olasılık güncelleme gerektiğinde kullanılır. Kredi analistinin günlük kararı için zorunlu değildir.</span></div></div></article>
+      <div class="grid two">
+        <article class="panel"><div class="panel-head"><div><h3>Bayes güncellemesi</h3><p>Yeni gözlem geldikçe risk inancını güncelleyin.</p></div><button class="info-btn" data-help="bayes">i</button></div><div class="form-grid compact"><label class="field"><span>Alfa <button class="info-btn" data-help="beta_prior" aria-label="Alfa açıklaması">i</button></span><input id="bAlpha" type="number" min="0.000001" value="2"></label><label class="field"><span>Beta <button class="info-btn" data-help="beta_prior" aria-label="Beta açıklaması">i</button></span><input id="bBeta" type="number" min="0.000001" value="18"></label><label class="field"><span>Başarı <button class="info-btn" data-help="bayes_observation" aria-label="Başarı sayısı açıklaması">i</button></span><input id="bSuccess" type="number" min="0" value="3"></label><label class="field"><span>Başarısızlık <button class="info-btn" data-help="bayes_observation" aria-label="Başarısızlık sayısı açıklaması">i</button></span><input id="bFailure" type="number" min="0" value="47"></label></div><button id="runBayes" class="btn primary">Hesapla</button><div id="bayesResult" class="mini-result">Sonuç burada gösterilir.</div></article>
+        <article class="panel"><div class="panel-head"><div><h3>Normal dağılım altında karar</h3><p>Kritik oran ve optimal miktar hesabı.</p></div><button class="info-btn" data-help="normal">i</button></div><div class="form-grid compact"><label class="field"><span>Ortalama</span><input id="nMean" type="number" value="1000"></label><label class="field"><span>Standart sapma</span><input id="nStd" type="number" value="180"></label><label class="field"><span>Satış değeri</span><input id="nPrice" type="number" value="125"></label><label class="field"><span>Maliyet</span><input id="nCost" type="number" value="80"></label></div><button id="runNormal" class="btn primary">Hesapla</button><div id="normalResult" class="mini-result">Sonuç burada gösterilir.</div></article>
+      </div>
+      <article class="panel"><div class="panel-head"><div><h3>Karar Bilimi Haritası</h3><p>K-Risk'in arka planda kullandığı 16 bilimsel temel.</p></div></div><div id="scienceMap" class="science-grid"></div></article>
+    </section>
+  </main>
+</div>
+
+<div id="helpBackdrop" class="drawer-backdrop hidden"></div>
+<aside id="helpDrawer" class="help-drawer v8-help" aria-hidden="true" aria-label="K-Risk yardım merkezi">
+  <div class="drawer-head"><div><span class="section-kicker">K-RISK REHBERİ</span><h3 id="helpTitle">Yardım Merkezi</h3><p>Kavramlar ve kullanım desteği.</p></div><button id="closeHelp" class="icon-btn dark" aria-label="Yardım merkezini kapat">×</button></div>
+  <div class="help-search-wrap"><label><span class="sr-only">Yardımda ara</span><input id="helpSearch" type="search" placeholder="Örn. PD, LGD, EAD, RAROC…" autocomplete="off"></label><div class="help-tabs"><button id="helpPageTab" class="help-tab active">Bu Ekran</button><button id="helpGlossaryTab" class="help-tab">Kavram Sözlüğü</button><button id="explainModeBtn" class="help-tab" aria-pressed="false" title="Formların altındaki kısa açıklamaları açar veya kapatır">Açıklamaları Göster</button></div></div>
+  <div id="helpContent" class="drawer-content"></div>
+</aside>
+
+<script src="/static/app.js?v=14.1.2" defer></script>
+</body>
+</html>
