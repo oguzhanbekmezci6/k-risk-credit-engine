@@ -12,6 +12,7 @@ The main purpose of K-Risk is not to claim that I recreated a real bank's intern
 
 It is a project where I can demonstrate how I approach a complex problem, divide it into modules, translate mathematical concepts into code, test the results, and improve the model when I find inconsistencies.
 
+<img width="1090" height="354" alt="image" src="https://github.com/user-attachments/assets/f35717f0-d086-4c2f-a4d4-a5947529f3b7" />
 
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="55"/>
