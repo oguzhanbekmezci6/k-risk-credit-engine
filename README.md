@@ -1,6 +1,6 @@
 Why I Built K-Risk
 
-I developed K-Risk as a post-graduation project to practise turning theoretical concepts into working software.
+I developed K-Risk after graduation to gain practical experience and apply the theoretical knowledge I had learned to a real software project.
 
 During the project, I worked on combining:
 
@@ -12,7 +12,6 @@ The main purpose of K-Risk is not to claim that I recreated a real bank's intern
 
 It is a project where I can demonstrate how I approach a complex problem, divide it into modules, translate mathematical concepts into code, test the results, and improve the model when I find inconsistencies.
 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" width="55"/> 
 
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="55"/>
